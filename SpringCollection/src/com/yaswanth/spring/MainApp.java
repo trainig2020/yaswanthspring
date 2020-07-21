@@ -1,0 +1,15 @@
+package com.yaswanth.spring;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		ApplicationContext context= new ClassPathXmlApplicationContext("bean.xml");
+		Triangle traingle=(Triangle) context.getBean("traingle");
+		traingle.draw();
+
+	}
+
+}
