@@ -22,8 +22,11 @@ public class DepartmentController {
      
 	 @Autowired
 	 private DepartmentService departmentService;
-	 
 	 @RequestMapping(value = "/")
+	 public ModelAndView homepage() {
+		 return new ModelAndView("redirect:/home");
+	 }
+	 @RequestMapping(value = "/home")
 	 public ModelAndView getAllEmployees(HttpServletRequest request) {
 		 System.out.println("In Controller");
 		 List<Department> lstdept  = departmentService.getAllEmployees();
@@ -31,6 +34,7 @@ public class DepartmentController {
 		 session.setAttribute("DeptList", lstdept);
 		 ModelAndView modelAndView = new ModelAndView("home");
 		 modelAndView.addObject("DeptList", lstdept);
+		 modelAndView.addObject("homepage", "main");
 		 return modelAndView;
 	 }
 	 
@@ -75,6 +79,17 @@ public class DepartmentController {
 		modelAndView.addObject("DeptList", lst);
 		modelAndView.addObject("departmentid", deptid);
 		return  modelAndView;		
+	 }
+	 @RequestMapping(value = "/showdepartments",method = RequestMethod.GET)
+	 public ModelAndView showDepartments(HttpServletRequest request) {
+		 HttpSession session3 = request.getSession();
+		 List<Department> lstdept1 = (List<Department>) session3.getAttribute("DeptList");
+		 session3.setAttribute("DeptListemp", lstdept1);
+//		 ModelAndView modelAndView = new ModelAndView("home");
+//     	 modelAndView.addObject("DeptListemp", lstdept1);
+		 int deptid =  lstdept1.get(0).getDeptID();
+//		 modelAndView.addObject("name", "names");
+		 return new ModelAndView("redirect:/emplist?DeptID="+deptid);
 	 }
 	 
 }
