@@ -27,9 +27,9 @@ public class DepartmentController {
 		 return new ModelAndView("redirect:/home");
 	 }
 	 @RequestMapping(value = "/home")
-	 public ModelAndView getAllEmployees(HttpServletRequest request) {
+	 public ModelAndView getAllDepartments(HttpServletRequest request) {
 		 System.out.println("In Controller");
-		 List<Department> lstdept  = departmentService.getAllEmployees();
+		 List<Department> lstdept  = departmentService.getAllDepartments();
 		 HttpSession session = request.getSession();
 		 session.setAttribute("DeptList", lstdept);
 		 ModelAndView modelAndView = new ModelAndView("home");

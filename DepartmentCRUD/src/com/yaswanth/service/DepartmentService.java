@@ -16,7 +16,7 @@ public class DepartmentService {
 	@Autowired
 	private DepartmentDao departmentDao;
 	
-	public List<Department> getAllEmployees(){
+	public List<Department> getAllDepartments(){
 		System.out.println("In Service");
 		return departmentDao.getAllDepartments();
 	}

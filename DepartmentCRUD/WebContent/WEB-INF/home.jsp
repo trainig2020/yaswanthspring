@@ -14,7 +14,7 @@ h1 {
 	color: red;
 }
 #header {
-	background-color: lightbrown;
+	background-color: red;
 	width: 100%;
 	height: 50px;
 	text-align: center;
